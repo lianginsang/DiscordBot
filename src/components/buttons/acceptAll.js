@@ -2,7 +2,7 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('
 
 module.exports = {
     data: {
-        name: 'accept'
+        name: 'acceptAll'
     },
     async execute(interaction, client) {
         console.log(interaction.message.interaction.user)
@@ -42,7 +42,6 @@ module.exports = {
                 },
             ]);
         await interaction.update({
-            content: null,
             embeds: [embed],
             components: [row],
         })
