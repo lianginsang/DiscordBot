@@ -5,17 +5,16 @@ module.exports = {
         name: 'accept'
     },
     async execute(interaction, client) {
-        console.log(interaction.message.interaction.user)
+        //console.log(interaction.message.interaction.user)
         const challenger = interaction.message.interaction.user;
         const challenged = interaction.user;
         await interaction.message.startThread({
             name: 'Ranked Duel',
-            autoArchiveDuration: 60,
-            reason: 'Start Ranked PVP'
+            reason: 'Start Ranked PVP',
         });
         const row = new ActionRowBuilder();
         const cancel = new ButtonBuilder()
-            .setCustomId('cancel')
+            .setCustomId('cancelDuring')
             .setLabel('Cancel')
             .setStyle(ButtonStyle.Danger);
         row.addComponents(cancel);
@@ -42,7 +41,7 @@ module.exports = {
                 },
             ]);
         await interaction.update({
-            content: null,
+            content: `<@${challenged.id}> <@${challenger.id}>`,
             embeds: [embed],
             components: [row],
         })
