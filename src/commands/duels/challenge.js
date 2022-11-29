@@ -9,7 +9,7 @@ module.exports = {
             .setDescription('choose player to challenge (optional)')
             .setRequired(false)),
     async execute(interaction, client) {
-        const opponent = interaction.options.getUser('someone');
+        let opponent = interaction.options.getUser('someone');
         let row = new ActionRowBuilder();
         let embed = new EmbedBuilder();
         //challenge anyone
@@ -50,6 +50,7 @@ module.exports = {
         } else {
             //cant challenge self
             if (opponent.id === interaction.user.id) {
+                //make sure challenge does not go up if this runs
                 opponent = 'nope';
                 await interaction.reply({
                     content: 'What do you plan to accomplish with this command?',

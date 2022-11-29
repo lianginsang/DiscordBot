@@ -41,6 +41,7 @@ module.exports = {
                 },
             ]);
         await interaction.update({
+            //cancelDuring.js is dependant on this content code
             content: `<@${challenged.id}> <@${challenger.id}>`,
             embeds: [embed],
             components: [row],
